@@ -1,0 +1,577 @@
+<style>
+body {
+    background-color: #121212;
+    color: #050505;
+}
+
+:root {
+    --tab0: 0.0in;
+    --tab0-1: 0.15in;
+    --tab1: 4in;
+    --tab2: 1.29in;
+    --expspace: 0.025in;
+    --basefont: 10pt;
+    --experience_margin: 0.4in;
+    --sidebar-width: 1.6in;
+    --margin_vertical: 0.75in;
+    --margin_horizontal: 0.5in;
+}
+
+label, h1, h2, h3, h4, h5 {
+    color: black;
+}
+
+.page_margin {
+    background-color: white;
+    filter: drop-shadow(0 0 0.75rem black);
+    width: calc(8.5in - var(--margin_horizontal)*2);
+    height: calc(11in - var(--margin_vertical)*2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.25in;
+    margin-bottom: 0.25in;
+    padding: 0.75in 0.5in 0.75in;
+}
+
+.page {
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    padding: 0in;
+    position: relative;
+    overflow: visible;
+    font-size: var(--basefont);
+}
+
+@page {
+    size: 8.5in 11in;
+    margin: 0.75in 0.5in 0.75in;
+}
+
+@print {
+    size: 8.5in 11in;
+    margin-left: var(--margin_horizontal);
+    margin-right: var(--margin_horizontal);
+    margin-top: var(--margin_vertical);
+    margin-bottom: var(--margin_vertical);
+}
+
+@media print {
+    .page {
+        padding: 0in;
+        margin: 0in;
+        position: absolute;
+        left: 1pt;
+        top: 1pt;
+        right: 1pt;
+        bottom: 1pt;
+    }
+    .page_margin {
+        padding: 0in;
+        margin: 0in;
+        filter: none;
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        background-color: white;
+    }
+}
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+pre {
+    white-space: pre-line;
+    margin: 0pt;
+}
+
+section {
+    margin: 0pt;
+    padding: 0pt;
+    margin-top: 5pt;
+}
+
+.title {
+    text-align: center;
+    line-height: 1em;
+    margin-top: 0pt;
+    margin-bottom: 0pt;
+    padding-bottom: 8pt;
+}
+
+span.title {
+    font-size: calc(var(--basefont) * 2);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: calc(var(--basefont) * 1.2);
+    line-height: 16pt;
+}
+
+.section_head {
+    text-transform: uppercase;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: calc(var(--basefont) * 1.4);
+    margin: 0pt;
+}
+
+hr {
+    line-height: 0pt;
+    margin-top: -2pt;
+    margin-bottom: 1pt;
+}
+
+section_body {
+    font-size: calc(var(--basefont) * 1.1);
+    margin-top: 0pt;
+    margin-bottom: 1em;
+    padding-left: var(--tab0);
+    display: block;
+}
+
+section_body .simple_list {
+    display: block;
+}
+
+section_body experience_block h3,position-title {
+    margin: 0pt;
+    font-size: calc(var(--basefont) * 1.2);
+    font-weight: bold;
+    display: inline-block;
+}
+
+experience_block {
+    display: block;
+    margin-top: 5pt;
+    position: relative;
+}
+
+experience_block experience_dates {
+    position: absolute;
+    vertical-align: top;
+    margin-right: var(--tab2);
+    width: 0pt;
+    right: 0;
+    top: 0;
+}
+
+experience_dates dates {
+    width: var(--tab2);
+}
+
+dates {
+    display: table-row;
+    table-layout: fixed;
+    float: left;
+    position: absolute;
+    text-align: justify;
+    white-space: nowrap;
+}
+
+dates * {
+    margin: 0;
+    padding: 0;
+}
+
+dates start {
+    display: table-cell;
+    width: auto;
+    max-width: 45%;
+    text-align: inherit;
+}
+
+dates sep {
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+}
+
+dates end {
+    display: table-cell;
+    min-width: calc(var(--tab2)*0.45);
+    text-align: inherit;
+}
+
+section_body experience_block school {
+    position: relative;
+    font-style: italic;
+    font-size: calc(var(--basefont) * 1.2);
+    display: inline-block;
+    width: 100%;
+}
+
+experience_block span.middle {
+    position: absolute;
+    margin-left: 3.2in;
+    left: 0pt;
+    top: 0;
+    margin-top: 0;
+    font-size: calc(var(--basefont) * 1.1);
+    display: inline-block;
+}
+
+gpa {
+    font-size: calc(var(--basefont) * 1.2);
+}
+
+.vertical_list {
+    padding-left: var(--tab0);
+}
+
+section_body experience_block label {
+    font-size: calc(var(--basefont) * 1.1);
+    font-weight: bold;
+}
+
+section_body experience_block .vertical_list {
+    font-size: calc(var(--basefont) * 1.1);
+}
+
+section_body experience_block .multicolumn {
+    display: inline-block; 
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: var(--tab0-1);
+    vertical-align: top;
+}
+
+section_body experience_block br + .multicolumn {
+    margin-right: 0.2in;
+}
+
+experience_block organization {
+    position: absolute;
+    font-size: calc(var(--basefont) * 1.1);
+    display: inline-block;
+    font-weight: bold;
+    left: calc(100% - var(--tab1));
+}
+
+ul.experience_tasks {
+    list-style-type: disk;
+    padding-left: var(--tab0-1);
+    margin: 0pt;
+    width: calc(100% - var(--tab0-1));
+}
+
+ul.experience_tasks li {
+    position: relative;
+    width: calc(100% - var(--tab2) - var(--tab0) - var(--experience_margin));
+}
+
+ul.experience_tasks li[experience] {
+    width: 100%;
+}
+
+experience_block li {
+    margin-top: var(--expspace);
+}
+
+column {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+vr {
+    width: 0px;
+    border-right: 1px solid #CCC;
+    position: absolute;
+    top: 0.6in;
+    bottom: 0.6in;
+}
+
+div {
+    --colwidth: var(--sidebar-width);
+}
+
+:not(column) +column, column:first-of-type {
+    width: var(--colwidth, 100%);
+}
+
+column +column {
+    width: calc(100% - var(--colwidth, 0%));
+}
+
+.fillV {
+    height: 100vh;
+}
+
+.fillH {
+    width: 100vw;
+}
+
+.spreadLines {
+    margin-bottom: 5pt;
+}
+
+.small_heading {
+    margin-top: 0.1in;
+    font-weight: bold;
+    display: block;
+}
+
+keyword {
+    display: inline-block;
+    padding-right: 4pt;
+    margin-top: 2pt;
+    padding: 0;
+    color: #111;
+    min-width: 37%;
+    white-space: nowrap;
+}
+
+keyword:not(:last-of-type)::after {
+    content: ",";
+}
+
+hidekeyword, Xkeyword {
+    display: none;
+}
+
+keyword[big] {
+    color: black;
+}</style>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume - Joel Maxwell</title>
+    <link rel="stylesheet" type="text/css" href="resume.css">
+    <!--<link rel="stylesheet" type="text/css" href="debug.css">-->
+</head>
+
+<body>
+    <div class="page_margin">
+        <div class="page">
+            <p class="title">
+                <span class="title">Joel Maxwell</span><br>
+                <span class="subtitle">425-354-9539 | joelmaxw311@gmail.com | <a href="https://linkedin.pastvre.net">https://linkedin.pastvre.net</a></span>
+            </p>
+            <div>
+            <column>
+                <div style="margin-right: 0.1in;">
+                <section id="TechnicalSkills">
+                    <h2 class="section_head">Proficiencies</h2>
+                    <!--<hr>-->
+                    <section_body>
+                        <span class="simple_list">
+                            <span class="small_heading">Languages</span>
+                            <keyword>Python</keyword>
+                            <keyword big>Java</keyword>
+                            <keyword>C++</keyword>
+                            <keyword>C#</keyword>
+                            <keyword>C</keyword>
+                            <keyword big>JavaScript</keyword>
+                            <keyword big>PHP</keyword>
+                            <keyword big>HTML</keyword>
+                            <keyword big>CSS</keyword>
+                            <keyword big>SQL</keyword>
+                            <keyword>AVR Assembly</keyword>
+                        </span>
+                        <span class="simple_list spreadLines">
+                            <span class="small_heading">Software Tools</span>
+                            <keyword>Git</keyword> 
+                            <keyword>Visual Studio</keyword>
+                            <keyword>MatLab</keyword>
+                            <keyword>Jenkins</keyword>
+                            <keyword>Unity</keyword>
+                            <keyword>MS Word</keyword>
+                            <keyword>MS Excel</keyword>
+                            <keyword>MS PPT</keyword>
+                            <keyword>Android Studio</keyword>
+                        </span>
+                        <span class="simple_list spreadLines">
+                            <span class="small_heading">Operating Systems</span>
+                            <keyword>Windows</keyword>
+                            <keyword>Android</keyword>
+                            <keyword>Linux/Ubuntu</keyword>
+                        </span>
+                        <span class="simple_list spreadLines">
+                            <span class="small_heading">Cloud Platforms</span>
+                            <keyword>AWS</keyword>
+                            <keyword>Azure</keyword>
+                        </span>
+                    </section_body>
+                </section>
+            </div>
+            </column>
+            <column>
+            <!--<vr style="margin-left: -0.05in;"></vr>-->
+            <section id="Education">
+                <h2 class="section_head">Education</h2>
+                <!--<hr>-->
+                <section_body>
+                    <experience_block>
+                        <h3>Bachelor of Science &ndash; Computer Science and Software Engineering</h3>
+                        <experience_dates>
+                            <dates>
+                                <start></start>
+                                <sep>&nbsp;</sep>
+                                <end>Jun 2020</end>
+                            </dates>
+                        </experience_dates>
+                        <school>University of Washington, Bothell WA
+                            <span class="middle">GPA:&ThickSpace;<gpa>3.65</gpa></span>
+                        </school>
+                        <label>Key Courses/Learning:</label>
+                        <br>
+                        <ul class="vertical_list multicolumn">
+                            <li>Cloud Computing</li>
+                            <li>Database Systems</li>
+                            <li>Operating Systems</li>
+                        </ul>
+                        <ul class="vertical_list multicolumn">
+                            <li>Information Assurance & Cyber Security</li>
+                            <li>Hardware & Computer Organization</li>
+                        </ul>
+                    </experience_block>
+                </section_body>
+            </section>
+            <section id="Experience">
+                <h2 class="section_head">Experience</h2>
+                <!--<hr>-->
+                <section_body>
+                    <experience_block>
+                        <position-title>Mobility Software Intern</position-title>
+                        <organization>FUJIFILM Sonosite, Bothell WA</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Jun 2019</start>
+                                <sep>&ndash;</sep>
+                                <end>Sep 2019</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Created a tool which registers medical devices for secure access to a cloud service.</li>
+                            <li>Integrated android-based system software with a secured REST API.</li>
+                        </ul>
+                    </experience_block>
+                    <experience_block>
+                        <position-title>Mobility Software Intern</position-title>
+                        <organization>FUJIFILM Sonosite, Bothell WA</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Jun 2018</start>
+                                <sep>&ndash;</sep>
+                                <end>Sep 2018</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Automated CTS testing for an Android-based medical device, using Python and Jenkins.
+                            </li>
+                            <li>Created an internal website to organize and compare automated test results.</li>
+                        </ul>
+                    </experience_block>
+                    <experience_block>
+                        <position-title>Data Analyst Intern</position-title>
+                        <organization>Microsurgical Technology, Redmond WA</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Jun 2017</start>
+                                <sep>&ndash;</sep>
+                                <end>Jul 2017</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Reviewed and optimized company database reporting using SQL and Microsoft Excel.</li>
+                        </ul>
+                    </experience_block>
+                </section_body>
+            </section>
+        </div>
+            <div>
+            <section id="SoftwareProjects">
+                <h2 class="section_head">Software Projects</h2>
+                <!--<hr>-->
+                <section_body>
+                    <experience_block>
+                        <position-title>Undergraduate Research &ndash; Cross Reality Drone</position-title>
+                        <organization>University of Washington, Bothell WA</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Apr 2019</start>
+                                <sep>&ndash;</sep>
+                                <end>Jun 2019</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Created diagnostic tools to configure secure communication with cloud services</li>
+                            <li>Integrated android-based medical device with cloud services REST API.</li>
+                        </ul>
+                    </experience_block>
+                    <experience_block>
+                        <position-title>Software System Analysis & Design Simulation</position-title>
+                        <organization>University of Washington, Bothell WA</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Jan 2019</start>
+                                <sep>&ndash;</sep>
+                                <end>Mar 2019</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Collaborated with team of 6 students to design and document system architecture.</li>
+                            <li>Elicited product features and requirements from a business team.</li>
+                        </ul>
+                    </experience_block>
+                    <experience_block>
+                        <position-title>Designed, Developed, Maintained Android App</position-title>
+                        <organization>Tracking Tool for Pok&eacute;mon GO</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>Sep 2016</start>
+                                <sep>&ndash;</sep>
+                                <end>Dec 2016</end>
+                            </dates>
+                        </experience_dates>
+                        <ul class="experience_tasks">
+                            <li>Published app on Google Play, resulting in over 100,000 downloads worldwide.</li>
+                            <li>Provided on-going troubleshooting, support, and additional app development.</li>
+                        </ul>
+                    </experience_block>
+                </section_body>
+            </section>
+            <section id="AwardsAndCommunityInvolvement">
+                <h2 class="section_head">Awards and Community Involvement</h2>
+                <!--<hr>-->
+                <section_body>
+                    <experience_block>
+                        <position-title>Eagle Scout Rank Award</position-title>
+                        <organization>Boy Scouts of America</organization>
+                        <experience_dates>
+                            <dates>
+                                <start></start>
+                                <sep></sep>
+                                <end>Dec 2015</end>
+                            </dates>
+                        </experience_dates>
+                    </experience_block>
+                    <experience_block>
+                        <position-title>Study Zone Tutor</position-title>
+                        <organization>King County Library System</organization>
+                        <experience_dates>
+                            <dates>
+                                <start>May 2017</start>
+                                <sep>&ndash;</sep>
+                                <end>May 2018</end>
+                            </dates>
+                        </experience_dates>
+                    </experience_block>
+                </section_body>
+            </section>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
